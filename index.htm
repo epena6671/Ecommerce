@@ -1,0 +1,103 @@
+<!doctype HtML>
+<html>
+    <head>
+        <title>Shoe Store </title>
+        </style>
+        <script>
+            function initPrices(){
+                var tax = 0.0875;
+                var ship = 0;
+                var pr1 = 15, wpr1 = 12;
+                var pr2 = 8, wpr2 = 5;
+                var pr3 = 10, wpr3 = 7;
+                var q1 = parseFloat(document.getElementById("shoe1").value);
+                var q2 = parseFloat(document.getElementById("shoe2").value);
+                var q3 = parseFloat(document.getElementById("shoe3").value);
+            function process(){
+                //calc
+                
+                var itemssold = q1 + q2 + q3;
+                var cusubt = (q1*pr1)+(q2*pr2)+(q3*pr3);
+                var tax2 = cusubt*tax;
+                var cusubt2 = ((q1*pr1)+(q2*pr2)+(q3*pr3)) + tax2;
+                var cosubt = (wpr1*q1)+(wpr2*q2)+(wpr3*q3); 
+                var profit = cusubt - cosubt;
+                //shipping
+                if (cusubt <100){
+                    ship = 25;
+                }else if (cusubt >=100 && cusubt<=200){
+                    ship = 10;
+                }else{
+                    ship = 0;
+                }
+                var total = cusubt
+                //customer
+                var build1 = "<pre>";
+                build1 += "CUSTOMER ORDER";
+                build1 += "<br>SUBTOTAL:              " + cusubt;
+                build1 += "<br>TAX:                   " + tax*100 + "%";
+                build1 += "<br>SHIPPING AND HANDLING: " + ship;
+                build1 += "<br>TOTAL:                 " + cusubt2 + ship;
+                
+                var op1 = document.getElementById("customer");
+                op.innerHTML="build1";
+                //company
+                var build2 = "<pre>";
+                build2 += "ORDER DETAILS FOR COMPANY";
+                build2 += "<br>TOTAL ITEMS SOLD:  " + itemssold;
+                build2 += "<br>CUSTOMER SUBTOTAL: " + cusubt;
+                build2 += "<br>COMPANY SUBTOTAL:  " + cosubt;
+                build2 += "<br>PROFIT/LOSS:       " + profit;
+                
+            }
+
+         
+            }     
+            
+        </script>
+    </head>
+    <body>
+    <h1> 
+        Shoes
+    </h1>
+    <br>
+    <h2> 
+        
+        Crazy Explosive(Red/Design) 
+        
+        <br> 
+        <img src= "item.jpg">
+        <p> The Crazy Explosive sneakers are considered to be one of the best all around shoes ever made! </p>
+        
+        <br><p>Price: $15</p><br><p>Quantity: </p>
+        <input type="text" id="shoe1" value="0" placeholder="Enter Quantity">    
+        <br>
+        <br>
+        
+        
+        Air Precision(Black/White)
+        <br>
+        <img src= "item2.jpg">
+        <p> The Air Precision sneakers have excellent cushion to help rebounders and finishers </p>
+        <br><p>Price: $10</p><br><p>Quantity: </p>
+        
+        <input type="text" id="shoe2" value="0" placeholder="Enter Quantity">
+        <br>
+        <br>
+        
+        Harden 1's(Black,White,Red) 
+        <br>
+        <img src= "item3">
+        <p> The Harden 1's have mazing traction for better dribble moves making you unstoppable </p>
+        
+        <br><p>Price: $15</p><br><p>Quantity: </p>
+        <input type="text" id="shoe3" value="0" placeholder="Enter Quantity">   
+            
+            
+        <button onclick="process()">Process Order</button>
+        </div>
+        <div id="customer"></div>    
+   
+   
+    </body>
+</html>
